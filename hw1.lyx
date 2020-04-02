@@ -1,0 +1,536 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Variables to change every new document
+\newcommand{\hmwkClass}{236330 - Introduction to Optimization} % Course/class
+\newcommand{\hmwkNumber}{1} % Homework number
+
+% Constants to set once
+\newcommand{\hmwkAuthorNameI}{Amit Rotner} % Your name
+\newcommand{\hmwkStudentNumberI}{312176050} % Student number
+\newcommand{\hmwkAuthorNameII}{Or Steiner} % Your name
+\newcommand{\hmwkStudentNumberII}{123456789} % Student number
+
+% Packages
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+% General document properties
+\linespread{1.1} % Line spacing
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+% Required to not count titlepage in page numbering
+\addtocounter {page} {-1}
+
+% Make a simple command for use in document body
+\newcommand{\start}{
+\maketitle
+\thispagestyle{empty}
+\newpage
+}
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorNameI\ and \hmwkAuthorNameII} % Top left header
+\rhead{\hmwkClass:\ Homework\ \#\hmwkNumber}
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+% The following 2 commands setup the title page
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \\ Homework\ \#\hmwkNumber}}\\
+\normalsize\vspace{0.1in}\small{ \today }\\
+\vspace{3in}
+}
+
+\author{
+  \textbf{\hmwkAuthorNameI} \\
+  \texttt{\hmwkStudentNumberI} \\
+	\textbf{\hmwkAuthorNameII} \\
+  \texttt{\hmwkStudentNumberII}
+}
+
+% Do not display standard date since we use a custom date
+\date{}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip bigskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+start
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Analytical Differentiation:
+\end_layout
+
+\begin_layout Subsubsection*
+Task 1:
+\end_layout
+
+\begin_layout Standard
+Find the Gradient and Hessian of:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f_{1}\left(x\right)=\varphi\left(Ax\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+f_{1}:\mathbb{R}^{n}\to\mathbb{R}\\
+x\in\mathbb{R}^{n}\\
+A\in\mathbb{R}^{m\times n}\\
+\varphi:\mathbb{R}^{m}\to\mathbb{R}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given 
+\begin_inset Formula $\nabla\varphi$
+\end_inset
+
+ and 
+\begin_inset Formula $\nabla^{2}\varphi.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Solution:
+\end_layout
+
+\begin_layout Standard
+We start by finding the gradient:
+\end_layout
+
+\begin_layout Standard
+Denoting 
+\begin_inset Formula $u=Ax$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $du=dAx$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+From the external definition of gradient, we know that,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d\varphi=\left\langle \nabla\varphi,du\right\rangle =\nabla\varphi^{T}du=\nabla\varphi^{T}Adx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $df=\nabla f^{T}dx$
+\end_inset
+
+ and 
+\begin_inset Formula $d\varphi=df$
+\end_inset
+
+ (because 
+\begin_inset Formula $f\left(x\right)=\varphi\left(Ax\right)$
+\end_inset
+
+) we get that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g=\nabla f=A^{T}\nabla\varphi\left(Ax\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now for the Hessian,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dg=d\nabla f=dA^{T}\nabla\varphi\left(u\right)=A^{T}d\nabla\varphi\left(u\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the external definition of Hessian we know that 
+\begin_inset Formula $d\nabla\varphi\left(u\right)=Hdu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A^{T}d\nabla\varphi\left(u\right)=A^{T}H\left(u\right)du=A^{T}H\left(Ax\right)Adx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $H=\nabla^{2}\varphi$
+\end_inset
+
+, it yields that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H\left(x\right)=A^{T}\nabla^{2}\varphi\left(Ax\right)A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Task 2:
+\end_layout
+
+\begin_layout Standard
+Develop the Gradient and Hessian of:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f_{2}\left(x\right)=h\left(\varphi\left(x\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+f_{2}:\mathbb{R}^{n}\to\mathbb{R}\\
+x\in\mathbb{R}^{n}\\
+\varphi:\mathbb{R}^{m}\to\mathbb{R}\\
+h:\mathbb{R}\to\mathbb{R}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given 
+\begin_inset Formula $\nabla\varphi,\ \nabla^{2}\varphi,\ h^{\prime},\ h^{\prime\prime}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Solution:
+\end_layout
+
+\begin_layout Standard
+We start by finding the gradient:
+\end_layout
+
+\begin_layout Standard
+Denoting 
+\begin_inset Formula $u=\varphi\left(x\right)$
+\end_inset
+
+.
+ From the external definition of the gradient, we know that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+du=\left\langle \nabla\varphi\left(x\right),dx\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dh=h^{\prime}\left(u\right)du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining these two together yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dh=h^{\prime}\left(u\right)\left\langle \nabla\varphi\left(x\right),dx\right\rangle =\left\langle h^{\prime}\left(u\right)\nabla\varphi\left(x\right),dx\right\rangle =\left\langle h^{\prime}\left(\varphi\left(x\right)\right)\nabla\varphi\left(x\right),dx\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $df=\nabla f^{T}dx$
+\end_inset
+
+ we get that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g=\nabla f=\left(h^{\prime}\left(\varphi\left(x\right)\right)\nabla\varphi\left(x\right)\right)^{T}\underset{_{(1)}}{=}h^{\prime}\left(\varphi\left(x\right)\right)\nabla\varphi\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+\begin_inset Formula $(1)$
+\end_inset
+
+ - Since 
+\begin_inset Formula $h^{\prime}\left(\varphi\left(x\right)\right)$
+\end_inset
+
+ is a scalar and 
+\begin_inset Formula $\nabla\varphi\left(x\right)=\nabla\varphi^{T}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now for the Hessian,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+dg & =d\nabla f=d\left(h^{\prime}\left(u\right)\nabla\varphi\left(x\right)\right)\\
+ & =dh^{\prime}\left(u\right)\nabla\varphi\left(x\right)+h^{\prime}\left(u\right)d\nabla\varphi\left(x\right)\\
+ & =h^{\prime\prime}\left(u\right)du\nabla\varphi\left(x\right)+h^{\prime}\left(u\right)\nabla^{2}\varphi\left(x\right)dx\\
+ & \underset{_{(1)}}{=}h^{\prime\prime}\left(u\right)\nabla\varphi\left(x\right)du+h^{\prime}\left(u\right)\nabla^{2}\varphi\left(x\right)dx\\
+ & =h^{\prime\prime}\left(u\right)\cdot\nabla\varphi\left(x\right)\cdot\left\langle \nabla\varphi\left(x\right),dx\right\rangle +h^{\prime}\left(u\right)\nabla^{2}\varphi\left(x\right)dx\\
+ & =h^{\prime\prime}\left(u\right)\cdot\nabla\varphi\left(x\right)\cdot\nabla\varphi^{T}\left(x\right)dx+h^{\prime}\left(u\right)\nabla^{2}\varphi\left(x\right)dx\\
+ & =\left(h^{\prime\prime}\left(u\right)\cdot\nabla\varphi\left(x\right)\cdot\nabla\varphi^{T}\left(x\right)+h^{\prime}\left(u\right)\nabla^{2}\varphi\left(x\right)\right)\cdot dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+\begin_inset Formula $(1)$
+\end_inset
+
+ - Since 
+\begin_inset Formula $du=\left\langle \nabla\varphi\left(x\right),dx\right\rangle $
+\end_inset
+
+ is a scalar.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the external definition of Hessian we know that 
+\begin_inset Formula $dg=Hdx$
+\end_inset
+
+, hence:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H=h^{\prime\prime}\left(u\right)\cdot\nabla\varphi\left(x\right)\cdot\nabla\varphi^{T}\left(x\right)+h^{\prime}\left(u\right)\nabla^{2}\varphi\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
