@@ -148,7 +148,7 @@ def magic():
 
 
 if __name__ == "__main__":
-    x_vector = np.array([[1, 2, 3]]).T
+    x_vector = np.random.rand(3, 1)
     A_mat = magic()
     # A_mat = np.array([[2, 0, 0], [0, 2, 0], [0, 0, 2]])
     plot_graphs(x_vector, A_mat)
