@@ -2,59 +2,94 @@ import numpy as np
 import matplotlib.pyplot as plot
 
 
-def phi(x):
+def phi(x, nargout=1):
     x1, x2, x3 = x[0], x[1], x[2]
     mul_x = float(x1 * x2 * x3)
     phi_x = np.sin(mul_x)
-    grad_phi_x = np.transpose(
-        np.array([[np.cos(mul_x) * x2 * x3, np.cos(mul_x) * x1 * x3, np.cos(mul_x) * x1 * x2]]))
-    hes_phi_x = np.array([[-np.sin(mul_x) * (x2 ** 2) * (x3 ** 2), x3 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)),
-                           x2 * (-mul_x * np.sin(mul_x) + np.cos(mul_x))],
-                          [x3 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)), -np.sin(mul_x) * (x1 ** 2) * (x3 ** 2),
-                           x1 * (-mul_x * np.sin(mul_x) + np.cos(mul_x))],
-                          [x2 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)), x1 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)),
-                           -np.sin(mul_x) * (x1 ** 2) * (x2 ** 2)]])
-    grad_phi_x = grad_phi_x.reshape((3, 1))
-    hes_phi_x = hes_phi_x.reshape((3, 3))
-    return phi_x, grad_phi_x, hes_phi_x
+    if nargout == 1:
+        return phi_x
+    elif nargout == 2:
+        grad_phi_x = np.transpose(
+            np.array([[np.cos(mul_x) * x2 * x3, np.cos(mul_x) * x1 * x3, np.cos(mul_x) * x1 * x2]]))
+        grad_phi_x = grad_phi_x.reshape((3, 1))
+        return phi_x, grad_phi_x
+    elif nargout == 3:
+        grad_phi_x = np.transpose(
+            np.array([[np.cos(mul_x) * x2 * x3, np.cos(mul_x) * x1 * x3, np.cos(mul_x) * x1 * x2]]))
+        grad_phi_x = grad_phi_x.reshape((3, 1))
+        hes_phi_x = np.array([[-np.sin(mul_x) * (x2 ** 2) * (x3 ** 2), x3 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)),
+                               x2 * (-mul_x * np.sin(mul_x) + np.cos(mul_x))],
+                              [x3 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)), -np.sin(mul_x) * (x1 ** 2) * (x3 ** 2),
+                               x1 * (-mul_x * np.sin(mul_x) + np.cos(mul_x))],
+                              [x2 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)), x1 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)),
+                               -np.sin(mul_x) * (x1 ** 2) * (x2 ** 2)]])
+        hes_phi_x = hes_phi_x.reshape((3, 3))
+        return phi_x, grad_phi_x, hes_phi_x
+    else:
+        raise ValueError("Invalid nargout")
 
 
-def f1(x, *kwargs):
+def f1(x, *kwargs, nargout=1):
     A = np.array(kwargs[0])
     Ax = np.matmul(A, x)
-    phi_x, grad_x, hes_x = kwargs[1](Ax)
-    gradient_x = np.matmul(np.transpose(A), grad_x)
-    hessian_x = np.matmul(np.transpose(A), np.matmul(hes_x, A))
-    return phi_x, gradient_x, hessian_x
+    if nargout == 1:
+        return kwargs[1](Ax, nargout)
+    elif nargout == 2:
+        phi_x, grad_x = kwargs[1](Ax, nargout)
+        gradient_x = np.matmul(np.transpose(A), grad_x)
+        return phi_x, gradient_x
+    elif nargout == 3:
+        phi_x, grad_x, hes_x = kwargs[1](Ax, nargout)
+        gradient_x = np.matmul(np.transpose(A), grad_x)
+        hessian_x = np.matmul(np.transpose(A), np.matmul(hes_x, A))
+        return phi_x, gradient_x, hessian_x
+    else:
+        raise ValueError("Invalid nargout")
 
 
-def h(x):
+def h(x, nargout=1):
     h_x = np.exp(x)
-    grad_h_x = h_x
-    hes_h_x = grad_h_x
-    return h_x, grad_h_x, hes_h_x
+    if nargout == 1:
+        return h_x
+    elif nargout == 2:
+        return h_x, h_x
+    elif nargout == 3:
+        return h_x, h_x, h_x
+    raise ValueError("Invalid nargout")
 
 
-def f2(x, *kwargs):
+def f2(x, *kwargs, nargout=1):
     phi_in = kwargs[0]
     h_in = kwargs[1]
-    phi_x, grad_phi_x, hes_phi_x = phi_in(x)
-    h_phi_x, h_derivative, h_second_derivative = h_in(phi_x)
-    grad_h_phi_x = h_derivative * grad_phi_x
-    hes_h_phi_x = np.multiply(np.matmul(np.transpose(grad_phi_x), grad_phi_x), h_second_derivative) + np.multiply(
-        hes_phi_x, h_derivative)
-    return h_phi_x, grad_h_phi_x, hes_h_phi_x
+    if nargout == 1:
+        phi_x = phi_in(x)
+        h_phi_x = h_in(phi_x)
+        return h_phi_x
+    elif nargout == 2:
+        phi_x, grad_phi_x = phi_in(x, nargout)
+        h_phi_x, h_derivative = h_in(phi_x, nargout)
+        grad_h_phi_x = h_derivative * grad_phi_x
+        return h_phi_x, grad_h_phi_x
+    elif nargout == 3:
+        phi_x, grad_phi_x, hes_phi_x = phi_in(x, nargout)
+        h_phi_x, h_derivative, h_second_derivative = h_in(phi_x, nargout)
+        grad_h_phi_x = h_derivative * grad_phi_x
+        hes_h_phi_x = np.multiply(np.matmul(np.transpose(grad_phi_x), grad_phi_x), h_second_derivative) + np.multiply(
+            hes_phi_x, h_derivative)
+        return h_phi_x, grad_h_phi_x, hes_h_phi_x
+    else:
+        raise ValueError("Invalid nargout")
 
 
 def numdiff(func, x, *kwargs):
     identity = np.identity(len(x))
     eps = kwargs[0]
     id_eps = identity * eps
-    grad = np.array([[np.multiply((func(x + id_eps[:, i].reshape((3, 1)), *kwargs[1:])[0] -
-                                   func(x - id_eps[:, i].reshape((3, 1)), *kwargs[1:])[0]), 1 / (2 * eps))
+    grad = np.array([[np.multiply((func(x + id_eps[:, i].reshape((3, 1)), *kwargs[1:]) -
+                                   func(x - id_eps[:, i].reshape((3, 1)), *kwargs[1:])), 1 / (2 * eps))
                       for i in range(len(id_eps))]]).T
-    hes = np.array([np.multiply((func(x + id_eps[:, i].reshape((3, 1)), *kwargs[1:])[1] -
-                                 func(x - id_eps[:, i].reshape((3, 1)), *kwargs[1:])[1]), 1 / (2 * eps))
+    hes = np.array([np.multiply((func(x + id_eps[:, i].reshape((3, 1)), *kwargs[1:], nargout=2)[1] -
+                                 func(x - id_eps[:, i].reshape((3, 1)), *kwargs[1:], nargout=2)[1]), 1 / (2 * eps))
                     for i in range(len(id_eps))]).reshape((3, 3))
     return grad, hes
 
@@ -63,8 +98,8 @@ def numdiff(func, x, *kwargs):
 
 def plot_graphs(x, A):
     hw_epsilon = ((2 * (10 ** -16)) ** (1 / 3)) * x_vector.max()
-    f1_analytic = f1(x, A, phi)
-    f2_analytic = f2(x, phi, h)
+    f1_analytic = f1(x, A, phi, nargout=3)
+    f2_analytic = f2(x, phi, h, nargout=3)
     epsilons_list = [((2 * (10 ** -16)) ** (1 / i)) * x_vector.max() for i in range(1, 50)]
 
     f1_grad_diff_infinity_norm, f1_hes_diff_infinity_norm, f2_grad_diff_infinity_norm, f2_hes_diff_infinity_norm \
@@ -107,7 +142,13 @@ def plot_graphs(x, A):
         plot.show()
 
 
+def magic():
+    p = np.arange(1, 3+1)
+    return 3*np.mod(p[:, None] + p - (3+3)//2, 3) + np.mod(p[:, None] + 2*p-2, 3) + 1
+
+
 if __name__ == "__main__":
     x_vector = np.array([[1, 2, 3]]).T
-    A_mat = np.array([[2, 0, 0], [0, 2, 0], [0, 0, 2]])
+    A_mat = magic()
+    # A_mat = np.array([[2, 0, 0], [0, 2, 0], [0, 0, 2]])
     plot_graphs(x_vector, A_mat)
