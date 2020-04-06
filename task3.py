@@ -21,8 +21,8 @@ def phi(x, nargout=1):
                                x2 * (-mul_x * np.sin(mul_x) + np.cos(mul_x))],
                               [x3 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)), -np.sin(mul_x) * (x1 ** 2) * (x3 ** 2),
                                x1 * (-mul_x * np.sin(mul_x) + np.cos(mul_x))],
-                              [x2 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)), x1 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)),
-                               -np.sin(mul_x) * (x1 ** 2) * (x2 ** 2)]])
+                              [x2 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)),
+                               x1 * (-mul_x * np.sin(mul_x) + np.cos(mul_x)), -np.sin(mul_x) * (x1 ** 2) * (x2 ** 2)]])
         hes_phi_x = hes_phi_x.reshape((3, 3))
         return phi_x, grad_phi_x, hes_phi_x
     else:
@@ -100,12 +100,17 @@ def plot_graphs(x, A):
     hw_epsilon = ((2 * (10 ** -16)) ** (1 / 3)) * x_vector.max()
     f1_analytic = f1(x, A, phi, nargout=3)
     f2_analytic = f2(x, phi, h, nargout=3)
-    epsilons_list = [((2 * (10 ** -16)) ** (1 / i)) * x_vector.max() for i in range(1, 50)]
+    epsilons_list = [((2 * (10 ** -16)) ** (1 / i)) * x_vector.max() for i in range(1, 1000)]
 
     f1_grad_diff_infinity_norm, f1_hes_diff_infinity_norm, f2_grad_diff_infinity_norm, f2_hes_diff_infinity_norm \
         = [], [], [], []
 
+    """Best epsilon holder:
+    best_f1_grad_diff, best_f1_hes_diff, best_f2_grad_diff, best_f2_hes_diff = \
+        [np.inf, 0], [np.inf, 0], [np.inf, 0], [np.inf, 0]"""
+
     for epsilon in epsilons_list:
+
         f1_grad_numeric, f1_hes_numeric = numdiff(f1, x, epsilon, A, phi)
         f2_grad_numeric, f2_hes_numeric = numdiff(f2, x, epsilon, phi, h)
         f1_grad_diff = f1_analytic[1] - f1_grad_numeric
@@ -114,12 +119,16 @@ def plot_graphs(x, A):
         f2_hes_diff = f2_analytic[2] - f2_hes_numeric
 
         if epsilon == hw_epsilon:  # plotting graphs for HW
-            plot.plot(f1_grad_diff)
+            plot.plot(f1_grad_diff, 'o')
+            plot.xlabel('Coordinate')
+            plot.ylabel('Value')
             plot.show()
             plot.imshow(f1_hes_diff)
             plot.colorbar()
             plot.show()
-            plot.plot(f2_grad_diff)
+            plot.plot(f2_grad_diff, 'o')
+            plot.xlabel('Coordinate')
+            plot.ylabel('Value')
             plot.show()
             plot.imshow(f2_hes_diff)
             plot.colorbar()
@@ -130,25 +139,42 @@ def plot_graphs(x, A):
         f2_grad_diff_infinity_norm += [np.abs(np.amax(f2_grad_diff))]
         f2_hes_diff_infinity_norm += [np.abs(np.amax(f2_hes_diff))]
 
+        """Best epsilon calculations:
+        if np.abs(np.amax(f1_grad_diff)) < best_f1_grad_diff[0]:
+            best_f1_grad_diff = [np.abs(np.amax(f1_grad_diff)), epsilon]
+        if np.abs(np.amax(f1_hes_diff)) < best_f1_hes_diff[0]:
+            best_f1_hes_diff = [np.abs(np.amax(f1_hes_diff)), epsilon]
+        if np.abs(np.amax(f2_grad_diff)) < best_f2_grad_diff[0]:
+            best_f2_grad_diff = [np.abs(np.amax(f2_grad_diff)), epsilon]
+        if np.abs(np.amax(f2_hes_diff)) < best_f2_hes_diff[0]:
+            best_f2_hes_diff = [np.abs(np.amax(f2_hes_diff)), epsilon]"""
+
     for y, y_name in zip([f1_grad_diff_infinity_norm, f1_hes_diff_infinity_norm, f2_grad_diff_infinity_norm,
                           f2_hes_diff_infinity_norm],
                          [r'$f_1$ grad diff infinity norm', r'$f_1$ hes diff infinity norm',
                           r'$f_2$ grad diff infinity norm', r'$f_2$ hes diff infinity norm']):
         plot.plot(epsilons_list, y)
-        plot.xscale('log')
         plot.xlabel('epsilon')
-        plot.yscale('log')
+        plot.loglog()
         plot.ylabel(y_name)
         plot.show()
 
+    """Printing best epsilon:
+    print(f"best_f1_grad_diff: {best_f1_grad_diff}")
+    print(f"best_f1_hes_diff: {best_f1_hes_diff}")
+    print(f"best_f2_grad_diff: {best_f2_grad_diff}")
+    print(f"best_f2_hes_diff: {best_f2_hes_diff}")"""
+
 
 def magic():
-    p = np.arange(1, 3+1)
-    return 3*np.mod(p[:, None] + p - (3+3)//2, 3) + np.mod(p[:, None] + 2*p-2, 3) + 1
+    p = np.arange(1, 3 + 1)
+    return 3 * np.mod(p[:, None] + p - (3 + 3) // 2, 3) + np.mod(p[:, None] + 2 * p - 2, 3) + 1
 
 
 if __name__ == "__main__":
     x_vector = np.random.rand(3, 1)
+    """x_vector = np.array([[0.5129912340267514, 0.16838448081250978, 0.08190596134108585]]).transpose()
+     - the x_vector used for the dry graphs"""
     A_mat = magic()
     # A_mat = np.array([[2, 0, 0], [0, 2, 0], [0, 0, 2]])
     plot_graphs(x_vector, A_mat)

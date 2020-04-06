@@ -12,7 +12,7 @@
 
 % Constants to set once
 \newcommand{\hmwkAuthorNameI}{Amit Rotner} % Your name
-\newcommand{\hmwkStudentNumberI}{312176050} % Student number
+\newcommand{\hmwkStudentNumberI}{123456789} % Student number
 \newcommand{\hmwkAuthorNameII}{Or Steiner} % Your name
 \newcommand{\hmwkStudentNumberII}{123456789} % Student number
 
@@ -530,6 +530,411 @@ H=h^{\prime\prime}\left(u\right)\cdot\nabla\varphi\left(x\right)\cdot\nabla\varp
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection*
+Task 3:
+\end_layout
+
+\begin_layout Enumerate
+Let:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varphi\left(\begin{pmatrix}x_{1}\\
+x_{2}\\
+x_{3}
+\end{pmatrix}\right)=sin\left(x_{1}x_{2}x_{3}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The gradient of 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\nabla\varphi\left(x_{1},x_{2},x_{3}\right)=\begin{pmatrix}\frac{\partial\varphi}{\partial x_{1}}\\
+\frac{\partial\varphi}{\partial x_{1}}\\
+\frac{\partial\varphi}{\partial x_{1}}
+\end{pmatrix}=\begin{pmatrix}x_{2}x_{3}cos\left(x_{1}x_{2}x_{3}\right)\\
+x_{1}x_{3}cos\left(x_{1}x_{2}x_{3}\right)\\
+x_{1}x_{2}cos\left(x_{1}x_{2}x_{3}\right)
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Hessian of 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H=\begin{pmatrix}\frac{\partial^{2}\varphi}{\partial x_{1}^{2}} & \frac{\partial^{2}\varphi}{\partial x_{1}\partial x_{2}} & \frac{\partial^{2}\varphi}{\partial x_{1}\partial x_{3}}\\
+\frac{\partial^{2}\varphi}{\partial x_{2}\partial x_{1}} & \frac{\partial^{2}\varphi}{\partial x_{2}^{2}} & \frac{\partial^{2}\varphi}{\partial x_{2}\partial x_{3}}\\
+\frac{\partial^{2}\varphi}{\partial x_{3}\partial x_{1}} & \frac{\partial^{2}\varphi}{\partial x_{3}\partial x_{2}} & \frac{\partial^{2}\varphi}{\partial x_{3}^{2}}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denoting 
+\begin_inset Formula $u=x_{1}x_{2}x_{3}$
+\end_inset
+
+, we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H=\begin{pmatrix}-x_{2}^{2}x_{3}^{2}sin\left(u\right) & x_{3}\left(cos\left(u\right)-usin\left(u\right)\right) & x_{2}\left(cos\left(u\right)-usin\left(u\right)\right)\\
+x_{3}\left(cos\left(u\right)-usin\left(u\right)\right) & -x_{1}^{2}x_{3}^{2}sin\left(u\right) & x_{1}\left(cos\left(u\right)-usin\left(u\right)\right)\\
+x_{2}\left(cos\left(u\right)-usin\left(u\right)\right) & x_{1}\left(cos\left(u\right)-usin\left(u\right)\right) & -x_{1}^{2}x_{2}^{2}sin\left(u\right)
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Let:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h\left(x\right)=exp\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is known that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h\left(x\right)=h^{\prime}\left(x\right)=h^{\prime\prime}(x)=exp\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+We implemented the program as folllows:
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsubsection*
+Task 4:
+\end_layout
+
+\begin_layout Standard
+Let:
+\end_layout
+
+\begin_layout Subsubsection*
+Task 5:
+\end_layout
+
+\begin_layout Standard
+Using the matrix:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=\begin{pmatrix}2 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 2
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And a random vector:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x=\begin{pmatrix}0.512\\
+0.168\\
+0.081
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+We got the following results:
+\end_layout
+
+\begin_layout Paragraph*
+The function 
+\begin_inset Formula $f_{1}:$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The difference between the numerical and analytical gradient:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename graphs/f1_grad_diff.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The difference between the numerical and analytical Hessian:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename graphs/f1_hes_diff.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The infinity norm of the error between the numerical and analytical gradient
+ as a function of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename graphs/f1_grad_diff_infinity_norm_by_eps.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The best error rate is 
+\begin_inset Formula $1.3322\times10^{-12}$
+\end_inset
+
+, for 
+\begin_inset Formula $\epsilon=3\times10^{-6}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The infinity norm of the error between the numerical and analytical Hessian
+ as a function of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename graphs/f1_hes_diff_infinity_norm_by_eps.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The best error rate is 
+\begin_inset Formula $3.1747\times10^{-11}$
+\end_inset
+
+, for 
+\begin_inset Formula $\epsilon=3\times10^{-6}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+The function 
+\begin_inset Formula $f_{2}:$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The difference between the numerical and analytical gradient:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename graphs/f2_grad_diff.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The difference between the numerical and analytical Hessian:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename graphs/f2_hes_diff.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The infinity norm of the error between the numerical and analytical gradient
+ as a function of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename graphs/f2_grad_diff_infinity_norm_by_eps.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The best error rate is 
+\begin_inset Formula $4.5474\times10^{-13}$
+\end_inset
+
+, for 
+\begin_inset Formula $\epsilon=0.0003718$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The infinity norm of the error between the numerical and analytical Hessian
+ as a function of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename graphs/f2_hes_diff_infinity_norm_by_eps.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The best error rate is 
+\begin_inset Formula $0.00929$
+\end_inset
+
+, for 
+\begin_inset Formula $\epsilon=7.2547\times10^{-9}$
+\end_inset
+
+.
 \end_layout
 
 \end_body
