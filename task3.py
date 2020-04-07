@@ -105,7 +105,7 @@ def plot_graphs(x, A):
     f1_grad_diff_infinity_norm, f1_hes_diff_infinity_norm, f2_grad_diff_infinity_norm, f2_hes_diff_infinity_norm \
         = [], [], [], []
 
-    """Best epsilon holder:
+    """ Best epsilon holder:
     best_f1_grad_diff, best_f1_hes_diff, best_f2_grad_diff, best_f2_hes_diff = \
         [np.inf, 0], [np.inf, 0], [np.inf, 0], [np.inf, 0]"""
 
@@ -139,7 +139,7 @@ def plot_graphs(x, A):
         f2_grad_diff_infinity_norm += [np.abs(np.amax(f2_grad_diff))]
         f2_hes_diff_infinity_norm += [np.abs(np.amax(f2_hes_diff))]
 
-        """Best epsilon calculations:
+        """ Best epsilon calculations:
         if np.abs(np.amax(f1_grad_diff)) < best_f1_grad_diff[0]:
             best_f1_grad_diff = [np.abs(np.amax(f1_grad_diff)), epsilon]
         if np.abs(np.amax(f1_hes_diff)) < best_f1_hes_diff[0]:
@@ -173,8 +173,8 @@ def magic():
 
 if __name__ == "__main__":
     x_vector = np.random.rand(3, 1)
-    """x_vector = np.array([[0.5129912340267514, 0.16838448081250978, 0.08190596134108585]]).transpose()
-     - the x_vector used for the dry graphs"""
+    """x_vector = np.array([[0.06892114230312663, 0.24130053450481037, 0.4669045325053164]]).transpose()
+    - the x_vector used for the dry graphs"""
     A_mat = magic()
     # A_mat = np.array([[2, 0, 0], [0, 2, 0], [0, 0, 2]])
     plot_graphs(x_vector, A_mat)

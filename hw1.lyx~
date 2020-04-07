@@ -658,11 +658,7 @@ h\left(x\right)=h^{\prime}\left(x\right)=h^{\prime\prime}(x)=exp\left(x\right)
 
 \end_deeper
 \begin_layout Standard
-We implemented the program as folllows:
-\end_layout
-
-\begin_layout Standard
-...
+TODO: Maybe add a short explanation about our implementation
 \end_layout
 
 \begin_layout Subsubsection*
@@ -670,7 +666,7 @@ Task 4:
 \end_layout
 
 \begin_layout Standard
-Let:
+TODO: Maybe add a short explanation about our implementation
 \end_layout
 
 \begin_layout Subsubsection*
@@ -678,15 +674,15 @@ Task 5:
 \end_layout
 
 \begin_layout Standard
-Using the matrix:
+Using the magic matrix:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-A=\begin{pmatrix}2 & 0 & 0\\
-0 & 2 & 0\\
-0 & 0 & 2
+A=\begin{pmatrix}8 & 1 & 6\\
+3 & 5 & 7\\
+4 & 9 & 2
 \end{pmatrix}
 \]
 
@@ -702,9 +698,9 @@ And a random vector:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-x=\begin{pmatrix}0.512\\
-0.168\\
-0.081
+x=\begin{pmatrix}0.06892\\
+0.24130\\
+0.46690
 \end{pmatrix}
 \]
 
@@ -784,14 +780,15 @@ The infinity norm of the error between the numerical and analytical gradient
 
 \begin_layout Standard
 The best error rate is 
-\begin_inset Formula $1.3322\times10^{-12}$
+\begin_inset Formula $5.7478\times10^{-7}$
 \end_inset
 
 , for 
-\begin_inset Formula $\epsilon=3\times10^{-6}$
+\begin_inset Formula $\epsilon=6.60302\times10^{-9}$
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
@@ -817,11 +814,11 @@ The infinity norm of the error between the numerical and analytical Hessian
 
 \begin_layout Standard
 The best error rate is 
-\begin_inset Formula $3.1747\times10^{-11}$
+\begin_inset Formula $2.8968\times10^{-6}$
 \end_inset
 
 , for 
-\begin_inset Formula $\epsilon=3\times10^{-6}$
+\begin_inset Formula $\epsilon=36.60302\times10^{-9}$
 \end_inset
 
 .
@@ -894,11 +891,11 @@ The infinity norm of the error between the numerical and analytical gradient
 
 \begin_layout Standard
 The best error rate is 
-\begin_inset Formula $4.5474\times10^{-13}$
+\begin_inset Formula $2.9484\times10^{-13}$
 \end_inset
 
 , for 
-\begin_inset Formula $\epsilon=0.0003718$
+\begin_inset Formula $\epsilon=5.5524\times10^{-5}$
 \end_inset
 
 .
@@ -927,11 +924,11 @@ The infinity norm of the error between the numerical and analytical Hessian
 
 \begin_layout Standard
 The best error rate is 
-\begin_inset Formula $0.00929$
+\begin_inset Formula $0.01383$
 \end_inset
 
 , for 
-\begin_inset Formula $\epsilon=7.2547\times10^{-9}$
+\begin_inset Formula $\epsilon=2.7304\times10^{-6}$
 \end_inset
 
 .
