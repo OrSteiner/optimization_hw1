@@ -1,0 +1,545 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Variables to change every new document
+\newcommand{\hmwkClass}{236330 - Introduction to Optimization} % Course/class
+\newcommand{\hmwkNumber}{1} % Homework number
+
+% Constants to set once
+\newcommand{\hmwkAuthorNameI}{Amit Rotner} % Your name
+\newcommand{\hmwkStudentNumberI}{123456789} % Student number
+\newcommand{\hmwkAuthorNameII}{Or Steiner} % Your name
+\newcommand{\hmwkStudentNumberII}{123456789} % Student number
+
+% Packages
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+% General document properties
+\linespread{1.1} % Line spacing
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+% Required to not count titlepage in page numbering
+\addtocounter {page} {-1}
+
+% Make a simple command for use in document body
+\newcommand{\start}{
+\maketitle
+\thispagestyle{empty}
+\newpage
+}
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorNameI\ and \hmwkAuthorNameII} % Top left header
+\rhead{\hmwkClass:\ HW\hmwkNumber\ BONUS QUESTION}
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+% The following 2 commands setup the title page
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \\ Homework\ \#\hmwkNumber\\ BONUS QUESTION}}\\
+\normalsize\vspace{0.1in}\small{ \today }\\
+\vspace{3in}
+}
+
+\author{
+  \textbf{\hmwkAuthorNameI} \\
+  \texttt{\hmwkStudentNumberI} \\
+	\textbf{\hmwkAuthorNameII} \\
+  \texttt{\hmwkStudentNumberII}
+}
+
+% Do not display standard date since we use a custom date
+\date{}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip bigskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+start
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Problem:
+\end_layout
+
+\begin_layout Standard
+Let: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=USV^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Be singular-value decomposition of 
+\begin_inset Formula $𝐴$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We want to find the gradient of:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f_{i}\left(A\right)=\sigma_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Solution:
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $1\le i\le k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The diagonal entries of 
+\begin_inset Formula $S$
+\end_inset
+
+ are the singular values of 
+\begin_inset Formula $A$
+\end_inset
+
+, this implies that 
+\begin_inset Formula $S_{ii}=\sigma_{i}$
+\end_inset
+
+.
+ Hence:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f_{i}\left(A\right)=\sigma_{i}=e_{i}^{T}Se_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+df_{i}\left(A\right)=d\sigma_{i}=de_{i}^{T}Se_{i}=e_{i}^{T}dSe_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $U$
+\end_inset
+
+ and 
+\begin_inset Formula $V$
+\end_inset
+
+ are orthogonal matrices, it follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U^{T}U=V^{T}V=I
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dU^{T}U+U^{T}dU=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U^{T}dU=-dU^{T}U=-\left(U^{T}dU\right)^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, 
+\begin_inset Formula $U^{T}dU$
+\end_inset
+
+ is skew-symmetric.
+ And:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dV^{T}V+V^{T}dV=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dV^{T}V=-V^{T}dV=-\left(dV^{T}V\right)^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus 
+\begin_inset Formula $dV^{T}V$
+\end_inset
+
+ is skew-symmetric, as well.
+\end_layout
+
+\begin_layout Standard
+Using the product rule of differentials on 
+\begin_inset Formula $A=USV^{T},$
+\end_inset
+
+we get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dA=dUSV^{T}+UdSV^{T}+USdV^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Left multiplying by 
+\begin_inset Formula $U^{T}$
+\end_inset
+
+ and right multiplying by 
+\begin_inset Formula $V$
+\end_inset
+
+ the above, yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U^{T}dAV=U^{T}dUS+dS+SdV^{T}V
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $U^{T}dU$
+\end_inset
+
+ and 
+\begin_inset Formula $dV^{T}V$
+\end_inset
+
+ are skew-symmetric matrices, their diagonal is zero.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $S$
+\end_inset
+
+ is diagonal, hence 
+\begin_inset Formula $dS$
+\end_inset
+
+ is diagonal and therefore,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dS=I_{k}\odot\left[U^{T}dAV\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $A\odot B$
+\end_inset
+
+ is the Hadamard product of 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Combining all together gives us:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+df_{i}\left(A\right) & =e_{i}^{T}dSe_{i}\\
+ & \underset{_{(1)}}{=}Tr\left(e_{i}^{T}dSe_{i}\right)\\
+ & =Tr\left(e_{i}^{T}I^{k}\odot\left[U^{T}dAV\right]e_{i}\right)\\
+ & \underset{_{(2)}}{=}Tr\left(e_{i}e_{i}^{T}I^{k}\odot\left[U^{T}dAV\right]\right)\\
+ & \underset{_{(3)}}{=}Tr\left(I_{ii}^{k}\odot\left[U^{T}dAV\right]\right)\\
+ & =\left[U^{T}dAV\right]_{ii}\\
+ & \underset{_{(1)}}{=}Tr\left(\left[U^{T}dAV\right]_{ii}\right)\\
+ & =Tr\left(I_{ii}^{k}U^{T}dAV\right)\\
+ & \underset{_{(2)}}{=}Tr\left(VI_{ii}^{k}U^{T}dA\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $(1)$
+\end_inset
+
+ - 
+\begin_inset Formula $\forall a\in\mathbb{R}$
+\end_inset
+
+: 
+\begin_inset Formula $Tr\left(a\right)=a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $(2)$
+\end_inset
+
+ - Trace is invariant under cyclic permutation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $(3)$
+\end_inset
+
+ - 
+\begin_inset Formula $I_{ii}^{k}$
+\end_inset
+
+ is a 
+\begin_inset Formula $k\times k$
+\end_inset
+
+ matrix with all entries equal to 
+\begin_inset Formula $0$
+\end_inset
+
+, except for the 
+\begin_inset Formula $ii$
+\end_inset
+
+ element which is equal to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using the external definition of the gradient, we get:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nabla f_{i}\left(A\right)=UI_{ii}^{k}V^{T}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

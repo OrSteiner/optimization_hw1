@@ -709,26 +709,7 @@ Task 4:
 \end_layout
 
 \begin_layout Standard
-The required function to calculate numericly the gradient and hessian is
- passed as a parameter to the 
-\end_layout
 
-\begin_layout Standard
-numdiff function as well as required 
-\begin_inset Formula $\epsilon$
-\end_inset
-
-.
- We calculate f’s value at 
-\begin_inset Formula $\left(x-\epsilon\right),\left(x+\epsilon\right)$
-\end_inset
-
-, and calculate the 
-\end_layout
-
-\begin_layout Standard
-numerical gradient and hessian according to the formula presented in the
- assignment.
 \end_layout
 
 \begin_layout Subsubsection*
